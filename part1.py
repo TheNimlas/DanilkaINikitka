@@ -9,7 +9,8 @@ class Window(QWidget, Ui_maps):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
-        map_request = "https://static-maps.yandex.ru/1.x/?ll=133.795384,-25.694768&spn=20.700,20.700&l=sat"
+        map_request = "https://static-maps.yandex.ru/1.x/?ll=133.795384," \
+                      "-25.694768&spn=20.700,20.700&l=sat"
         response = requests.get(map_request)
 
         if not response:
