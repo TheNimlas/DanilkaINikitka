@@ -22,49 +22,48 @@
      <height>481</height>
     </rect>
    </property>
+   <property name="focusPolicy">
+    <enum>Qt::StrongFocus</enum>
+   </property>
    <property name="text">
     <string/>
    </property>
   </widget>
-  <widget class="QPushButton" name="ma_format">
+  <widget class="QWidget" name="verticalLayoutWidget">
    <property name="geometry">
     <rect>
-     <x>720</x>
-     <y>40</y>
-     <width>111</width>
-     <height>31</height>
+     <x>690</x>
+     <y>20</y>
+     <width>160</width>
+     <height>83</height>
     </rect>
    </property>
-   <property name="text">
-    <string>формат карты</string>
-   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QPushButton" name="ma_format">
+      <property name="text">
+       <string>формат карты</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="sat_format">
+      <property name="text">
+       <string>формат спутника</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="gibrid_format">
+      <property name="text">
+       <string>гибридный формат</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
   </widget>
-  <widget class="QPushButton" name="sat_format">
-   <property name="geometry">
-    <rect>
-     <x>720</x>
-     <y>80</y>
-     <width>111</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>формат спутника</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="gibrid_format">
-   <property name="geometry">
-    <rect>
-     <x>720</x>
-     <y>120</y>
-     <width>111</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>гибридный формат</string>
-   </property>
-  </widget>
+  <zorder>verticalLayoutWidget</zorder>
+  <zorder>map</zorder>
  </widget>
  <resources/>
  <connections/>
