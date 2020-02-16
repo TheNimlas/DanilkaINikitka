@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>668</width>
-    <height>555</height>
+    <width>863</width>
+    <height>519</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,12 +18,51 @@
     <rect>
      <x>10</x>
      <y>10</y>
-     <width>641</width>
-     <height>531</height>
+     <width>651</width>
+     <height>481</height>
     </rect>
    </property>
    <property name="text">
     <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="ma_format">
+   <property name="geometry">
+    <rect>
+     <x>720</x>
+     <y>40</y>
+     <width>111</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>формат карты</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="sat_format">
+   <property name="geometry">
+    <rect>
+     <x>720</x>
+     <y>80</y>
+     <width>111</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>формат спутника</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="gibrid_format">
+   <property name="geometry">
+    <rect>
+     <x>720</x>
+     <y>120</y>
+     <width>111</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>гибридный формат</string>
    </property>
   </widget>
  </widget>
