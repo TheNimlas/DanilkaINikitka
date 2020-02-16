@@ -63,7 +63,7 @@ class Window(QWidget, Ui_maps):
 
     def keyPressEvent(self, event):
         if event.key() == 16777238:
-            if self.i > 0:
+            if self.i - 0.005 > 0:
                 self.i -= 0.005
                 self.place_a_map()
         elif event.key() == 16777239:
