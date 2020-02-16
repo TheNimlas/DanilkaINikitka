@@ -7,7 +7,6 @@ from PyQt5.QtWidgets import QWidget, QApplication
 
 class Window(QWidget, Ui_maps):
     def __init__(self):
-        print(1)
         super().__init__()
         self.setupUi(self)
         self.map_request = "https://static-maps.yandex.ru/1.x/?ll=37.617635,55.755814&" \
@@ -29,7 +28,7 @@ class Window(QWidget, Ui_maps):
 
     def keyPressEvent(self, event):
         if event.key() == 16777238:
-            if self.i > 0:
+            if self.i - 0.005 > 0:
                 self.i -= 0.005
                 self.response = requests.get(self.map_request.format(self.i, self.i))
                 map_file = "map.jpg"
