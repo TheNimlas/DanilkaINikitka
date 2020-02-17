@@ -31,6 +31,7 @@ class Window(QWidget, Ui_maps):
             file.write(self.response.content)
         self.map_pic = QPixmap(map_file)
         self.map.setPixmap(self.map_pic)
+        self.map.setFocus()
         self.sat_format.clicked.connect(self.change_format)
         self.ma_format.clicked.connect(self.change_format)
         self.gibrid_format.clicked.connect(self.change_format)
@@ -48,6 +49,7 @@ class Window(QWidget, Ui_maps):
             file.write(self.response.content)
         self.map_pic = QPixmap(map_file)
         self.map.setPixmap(self.map_pic)
+        self.map.setFocus()
 
     def change_format(self):
         if self.sender() == self.sat_format:
@@ -71,20 +73,20 @@ class Window(QWidget, Ui_maps):
                 self.i += 0.005
                 self.place_a_map()
         elif event.key() == QtCore.Qt.Key_Up:
-            if self.second_coord < 55.756814:
-                self.second_coord += 0.0002
+            if self.second_coord < 84:
+                self.second_coord += self.i
                 self.place_a_map()
         elif event.key() == QtCore.Qt.Key_Down:
-            if self.second_coord > 55.754814:
-                self.second_coord -= 0.0002
+            if self.second_coord > -84:
+                self.second_coord -= self.i
                 self.place_a_map()
         elif event.key() == QtCore.Qt.Key_Right:
-            if self.first_coord < 37.619635:
-                self.first_coord += 0.0002
+            if self.first_coord < 179:
+                self.first_coord += 3.5 * self.i
                 self.place_a_map()
         elif event.key() == QtCore.Qt.Key_Left:
-            if self.first_coord > 37.615635:
-                self.first_coord -= 0.0002
+            if self.first_coord > -179:
+                self.first_coord -= 3.5 * self.i
                 self.place_a_map()
 
 
