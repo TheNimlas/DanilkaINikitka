@@ -39,6 +39,7 @@ class Window(QWidget, Ui_maps):
             file.write(self.response.content)
         self.map_pic = QPixmap(map_file)
         self.map.setPixmap(self.map_pic)
+        self.map.setFocus()
         self.sat_format.clicked.connect(self.change_format)
         self.ma_format.clicked.connect(self.change_format)
         self.gibrid_format.clicked.connect(self.change_format)
@@ -48,7 +49,6 @@ class Window(QWidget, Ui_maps):
         address = self.find_line.text()
         try:
             self.make_a_mark = True
-            print(self.params)
             geocoder_request = "http://geocode-maps.yandex.ru/1.x/?apikey=40d1649f-0493-4b70-" \
                                "98ba-98533de7710b&geocode={}&format=json".format(address)
             response = requests.get(geocoder_request)
@@ -67,6 +67,7 @@ class Window(QWidget, Ui_maps):
             print(e.__class__.__name__)
             self.map_pic = QPixmap('error.jpg')
             self.map.setPixmap(self.map_pic)
+            self.map.setFocus()
 
     def place_a_map(self):
         map_file = "map.jpg"
@@ -89,6 +90,7 @@ class Window(QWidget, Ui_maps):
             file.write(self.response.content)
         self.map_pic = QPixmap(map_file)
         self.map.setPixmap(self.map_pic)
+        self.map.setFocus()
 
     def change_format(self):
         if self.sender() == self.sat_format:
@@ -105,7 +107,7 @@ class Window(QWidget, Ui_maps):
     def keyPressEvent(self, event):
         try:
             if event.key() == 16777238:
-                if self.i > 0:
+                if self.i > 0.005:
                     self.i -= 0.005
                     self.place_a_map()
             elif event.key() == 16777239:
@@ -113,22 +115,20 @@ class Window(QWidget, Ui_maps):
                     self.i += 0.005
                     self.place_a_map()
             elif event.key() == QtCore.Qt.Key_Up:
-                print(1)
-                print(self.params)
-                if self.params['second_coord'] < self.second_coord + 0.001:
-                    self.params['second_coord'] += 0.0002
+                if self.params['second_coord'] < 84:
+                    self.params['second_coord'] += self.i
                     self.place_a_map()
             elif event.key() == QtCore.Qt.Key_Down:
-                if self.params['second_coord'] > self.second_coord - 0.001:
-                    self.params['second_coord'] -= 0.0002
+                if self.params['second_coord'] > -84:
+                    self.params['second_coord'] -= self.i
                     self.place_a_map()
             elif event.key() == QtCore.Qt.Key_Right:
-                if self.params['first_coord'] < self.first_coord + 0.002:
-                    self.params['first_coord'] += 0.0002
+                if self.params['first_coord'] < 179:
+                    self.params['first_coord'] += 3 * self.i
                     self.place_a_map()
             elif event.key() == QtCore.Qt.Key_Left:
-                if self.params['first_coord'] > self.first_coord - 0.002:
-                    self.params['first_coord'] -= 0.0002
+                if self.params['first_coord'] > -179:
+                    self.params['first_coord'] -= 3 * self.i
                     self.place_a_map()
         except Exception as e:
             print(e.__class__.__name__)
