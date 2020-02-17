@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>863</width>
+    <width>876</width>
     <height>519</height>
    </rect>
   </property>
@@ -34,7 +34,7 @@
     <rect>
      <x>640</x>
      <y>20</y>
-     <width>171</width>
+     <width>201</width>
      <height>128</height>
     </rect>
    </property>
@@ -132,8 +132,8 @@
   <widget class="QPushButton" name="find_button">
    <property name="geometry">
     <rect>
-     <x>690</x>
-     <y>472</y>
+     <x>640</x>
+     <y>470</y>
      <width>111</width>
      <height>41</height>
     </rect>
@@ -160,10 +160,42 @@
     <string>Find</string>
    </property>
   </widget>
+  <widget class="QPushButton" name="drop_button">
+   <property name="geometry">
+    <rect>
+     <x>760</x>
+     <y>470</y>
+     <width>111</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>19</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+            background-color: rgb(0, 0, 0);
+			color: #fcfaff;
+	         border-radius: 17px transparent;
+           border-bottom: 3px transparent;
+            border-right: 2px transparent;
+            border-left: 2px transparent;}
+            QPushButton:hover{
+            background-color: rgb(255,0,0);} 
+            QPushButton:pressed  {
+            background-color: rgb(232,95,76); } </string>
+   </property>
+   <property name="text">
+    <string>Drop</string>
+   </property>
+  </widget>
   <zorder>verticalLayoutWidget</zorder>
   <zorder>map</zorder>
   <zorder>find_line</zorder>
   <zorder>find_button</zorder>
+  <zorder>drop_button</zorder>
  </widget>
  <resources/>
  <connections/>

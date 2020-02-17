@@ -2,25 +2,23 @@
 
 # Form implementation generated from reading ui file 'map_window.ui'
 #
-# Created by: PyQt5 UI code generator 5.13.0
+# Created by: PyQt5 UI code generator 5.9.2
 #
 # WARNING! All changes made in this file will be lost!
 
-
 from PyQt5 import QtCore, QtGui, QtWidgets
-
 
 class Ui_maps(object):
     def setupUi(self, maps):
         maps.setObjectName("maps")
-        maps.resize(863, 519)
+        maps.resize(876, 519)
         self.map = QtWidgets.QLabel(maps)
         self.map.setGeometry(QtCore.QRect(10, 0, 651, 481))
         self.map.setFocusPolicy(QtCore.Qt.StrongFocus)
         self.map.setText("")
         self.map.setObjectName("map")
         self.verticalLayoutWidget = QtWidgets.QWidget(maps)
-        self.verticalLayoutWidget.setGeometry(QtCore.QRect(640, 20, 171, 128))
+        self.verticalLayoutWidget.setGeometry(QtCore.QRect(640, 20, 201, 128))
         self.verticalLayoutWidget.setObjectName("verticalLayoutWidget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.verticalLayoutWidget)
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
@@ -81,7 +79,7 @@ class Ui_maps(object):
         self.find_line.setFocusPolicy(QtCore.Qt.WheelFocus)
         self.find_line.setObjectName("find_line")
         self.find_button = QtWidgets.QPushButton(maps)
-        self.find_button.setGeometry(QtCore.QRect(690, 472, 111, 41))
+        self.find_button.setGeometry(QtCore.QRect(640, 470, 111, 41))
         font = QtGui.QFont()
         font.setPointSize(19)
         self.find_button.setFont(font)
@@ -97,10 +95,28 @@ class Ui_maps(object):
 "            QPushButton:pressed  {\n"
 "            background-color: rgb(232,95,76); } ")
         self.find_button.setObjectName("find_button")
+        self.drop_button = QtWidgets.QPushButton(maps)
+        self.drop_button.setGeometry(QtCore.QRect(760, 470, 111, 41))
+        font = QtGui.QFont()
+        font.setPointSize(19)
+        self.drop_button.setFont(font)
+        self.drop_button.setStyleSheet("QPushButton{\n"
+"            background-color: rgb(0, 0, 0);\n"
+"            color: #fcfaff;\n"
+"             border-radius: 17px transparent;\n"
+"           border-bottom: 3px transparent;\n"
+"            border-right: 2px transparent;\n"
+"            border-left: 2px transparent;}\n"
+"            QPushButton:hover{\n"
+"            background-color: rgb(255,0,0);} \n"
+"            QPushButton:pressed  {\n"
+"            background-color: rgb(232,95,76); } ")
+        self.drop_button.setObjectName("drop_button")
         self.verticalLayoutWidget.raise_()
         self.map.raise_()
         self.find_line.raise_()
         self.find_button.raise_()
+        self.drop_button.raise_()
 
         self.retranslateUi(maps)
         QtCore.QMetaObject.connectSlotsByName(maps)
@@ -112,3 +128,5 @@ class Ui_maps(object):
         self.sat_format.setText(_translate("maps", "Формат спутника"))
         self.gibrid_format.setText(_translate("maps", "Hybrid"))
         self.find_button.setText(_translate("maps", "Find"))
+        self.drop_button.setText(_translate("maps", "Drop"))
+

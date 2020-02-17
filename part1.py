@@ -44,6 +44,13 @@ class Window(QWidget, Ui_maps):
         self.ma_format.clicked.connect(self.change_format)
         self.gibrid_format.clicked.connect(self.change_format)
         self.find_button.clicked.connect(self.find)
+        self.drop_button.clicked.connect(self.drop_result)
+
+    def drop_result(self):
+        self.map_request = "https://static-maps.yandex.ru/1.x/?ll={},{}&" \
+                           "spn={},{}&l={}"
+        self.make_a_mark = False
+        self.place_a_map()
 
     def find(self):
         address = self.find_line.text()
