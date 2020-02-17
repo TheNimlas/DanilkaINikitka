@@ -217,6 +217,19 @@
     <string>Адрес:</string>
    </property>
   </widget>
+  <widget class="QRadioButton" name="index_show">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>500</y>
+     <width>111</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Показать индекс</string>
+   </property>
+  </widget>
   <zorder>verticalLayoutWidget</zorder>
   <zorder>map</zorder>
   <zorder>find_line</zorder>
@@ -224,6 +237,7 @@
   <zorder>drop_button</zorder>
   <zorder>address_info</zorder>
   <zorder>label_2</zorder>
+  <zorder>index_show</zorder>
  </widget>
  <resources/>
  <connections/>

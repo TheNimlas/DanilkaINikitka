@@ -2,13 +2,11 @@
 
 # Form implementation generated from reading ui file 'map_window.ui'
 #
-# Created by: PyQt5 UI code generator 5.13.0
+# Created by: PyQt5 UI code generator 5.9.2
 #
 # WARNING! All changes made in this file will be lost!
 
-
 from PyQt5 import QtCore, QtGui, QtWidgets
-
 
 class Ui_maps(object):
     def setupUi(self, maps):
@@ -121,6 +119,9 @@ class Ui_maps(object):
         self.label_2 = QtWidgets.QLabel(maps)
         self.label_2.setGeometry(QtCore.QRect(16, 462, 41, 41))
         self.label_2.setObjectName("label_2")
+        self.index_show = QtWidgets.QRadioButton(maps)
+        self.index_show.setGeometry(QtCore.QRect(10, 500, 111, 17))
+        self.index_show.setObjectName("index_show")
         self.verticalLayoutWidget.raise_()
         self.map.raise_()
         self.find_line.raise_()
@@ -128,6 +129,7 @@ class Ui_maps(object):
         self.drop_button.raise_()
         self.address_info.raise_()
         self.label_2.raise_()
+        self.index_show.raise_()
 
         self.retranslateUi(maps)
         QtCore.QMetaObject.connectSlotsByName(maps)
@@ -141,3 +143,5 @@ class Ui_maps(object):
         self.find_button.setText(_translate("maps", "Find"))
         self.drop_button.setText(_translate("maps", "Drop"))
         self.label_2.setText(_translate("maps", "Адрес:"))
+        self.index_show.setText(_translate("maps", "Показать индекс"))
+

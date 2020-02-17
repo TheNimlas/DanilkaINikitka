@@ -15,6 +15,7 @@ class Window(QWidget, Ui_maps):
         self.first_coord = 37.617635
         self.second_coord = 55.755814
         self.i = 0.005
+        self.print_index = False
         self.format = 'jpg'
         self.style = 'sat'
         self.params = {'apikey': '40d1649f-0493-4b70-98ba-98533de7710b',
@@ -45,6 +46,20 @@ class Window(QWidget, Ui_maps):
         self.gibrid_format.clicked.connect(self.change_format)
         self.find_button.clicked.connect(self.find)
         self.drop_button.clicked.connect(self.drop_result)
+        self.index_show.toggled.connect(self.show_index)
+
+    def show_index(self):
+        try:
+            if self.index_show.isChecked():
+                self.print_index = True
+                if self.address_info.text() != '':
+                    self.address_info.setText(self.toponym_address + ', ' + self.index)
+            else:
+                self.print_index = False
+                if self.address_info.text() != '':
+                    self.address_info.setText(self.toponym_address)
+        except Exception as e:
+            print(e.__class__.__name__)
 
     def drop_result(self):
         self.map_request = "https://static-maps.yandex.ru/1.x/?ll={},{}&" \
@@ -58,22 +73,29 @@ class Window(QWidget, Ui_maps):
         address = self.find_line.text()
         try:
             self.make_a_mark = True
-            geocoder_request = "http://geocode-maps.yandex.ru/1.x/?apikey=40d1649f-0493-4b70-" \
-                               "98ba-98533de7710b&geocode={}&format=json".format(address)
-            response = requests.get(geocoder_request)
-            json_response = response.json()
-            toponym = json_response["response"]["GeoObjectCollection"]["featureMember"][0][
-                "GeoObject"]
-            toponym_coodrinates = toponym["Point"]["pos"]
-            self.params['first_coord'] = float(toponym_coodrinates.split()[0])
-            self.params['second_coord'] = float(toponym_coodrinates.split()[1])
-            self.first_coord = float(toponym_coodrinates.split()[0])
-            self.second_coord = float(toponym_coodrinates.split()[1])
-            self.params['pt[0]'] = float(toponym_coodrinates.split()[0])
-            self.params['pt[1]'] = float(toponym_coodrinates.split()[1])
+            self.geocoder_request = "http://geocode-maps.yandex.ru/1.x/?apikey=" \
+                                    "40d1649f-0493-4b70-98ba-98533de7710b&geocode" \
+                                    "={}&format=json".format(address)
+            self.response = requests.get(self.geocoder_request)
+            self.json_response = self.response.json()
+            self.toponym = self.json_response["response"]["GeoObjectCollection"]
+            self.toponym = self.toponym["featureMember"][0]["GeoObject"]
+            self.toponym_coodrinates = self.toponym["Point"]["pos"]
+            self.params['first_coord'] = float(self.toponym_coodrinates.split()[0])
+            self.params['second_coord'] = float(self.toponym_coodrinates.split()[1])
+            self.first_coord = float(self.toponym_coodrinates.split()[0])
+            self.second_coord = float(self.toponym_coodrinates.split()[1])
+            self.params['pt[0]'] = float(self.toponym_coodrinates.split()[0])
+            self.params['pt[1]'] = float(self.toponym_coodrinates.split()[1])
             self.place_a_map()
-            toponym_address = toponym["metaDataProperty"]["GeocoderMetaData"]["text"]
-            self.address_info.setText(toponym_address)
+            self.toponym_address = self.toponym["metaDataProperty"]["GeocoderMetaData"]["text"]
+            self.address_info.setText(self.toponym_address)
+            self.index = self.toponym["metaDataProperty"]["GeocoderMetaData"]
+            self.index = self.index["Address"]["postal_code"]
+            if self.print_index:
+                self.address_info.setText(self.toponym_address + ', ' + self.index)
+        except KeyError:
+            self.address_info.setText('Неполный адрес')
         except Exception as e:
             print(e.__class__.__name__)
             self.map_pic = QPixmap('error.jpg')
