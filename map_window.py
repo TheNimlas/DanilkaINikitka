@@ -2,11 +2,13 @@
 
 # Form implementation generated from reading ui file 'map_window.ui'
 #
-# Created by: PyQt5 UI code generator 5.9.2
+# Created by: PyQt5 UI code generator 5.13.0
 #
 # WARNING! All changes made in this file will be lost!
 
+
 from PyQt5 import QtCore, QtGui, QtWidgets
+
 
 class Ui_maps(object):
     def setupUi(self, maps):
@@ -112,11 +114,20 @@ class Ui_maps(object):
 "            QPushButton:pressed  {\n"
 "            background-color: rgb(232,95,76); } ")
         self.drop_button.setObjectName("drop_button")
+        self.address_info = QtWidgets.QLabel(maps)
+        self.address_info.setGeometry(QtCore.QRect(70, 460, 531, 41))
+        self.address_info.setText("")
+        self.address_info.setObjectName("address_info")
+        self.label_2 = QtWidgets.QLabel(maps)
+        self.label_2.setGeometry(QtCore.QRect(16, 462, 41, 41))
+        self.label_2.setObjectName("label_2")
         self.verticalLayoutWidget.raise_()
         self.map.raise_()
         self.find_line.raise_()
         self.find_button.raise_()
         self.drop_button.raise_()
+        self.address_info.raise_()
+        self.label_2.raise_()
 
         self.retranslateUi(maps)
         QtCore.QMetaObject.connectSlotsByName(maps)
@@ -129,4 +140,4 @@ class Ui_maps(object):
         self.gibrid_format.setText(_translate("maps", "Hybrid"))
         self.find_button.setText(_translate("maps", "Find"))
         self.drop_button.setText(_translate("maps", "Drop"))
-
+        self.label_2.setText(_translate("maps", "Адрес:"))

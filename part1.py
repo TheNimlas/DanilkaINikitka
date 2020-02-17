@@ -50,6 +50,8 @@ class Window(QWidget, Ui_maps):
         self.map_request = "https://static-maps.yandex.ru/1.x/?ll={},{}&" \
                            "spn={},{}&l={}"
         self.make_a_mark = False
+        self.address_info.setText('')
+        self.find_line.setText('')
         self.place_a_map()
 
     def find(self):
@@ -70,6 +72,8 @@ class Window(QWidget, Ui_maps):
             self.params['pt[0]'] = float(toponym_coodrinates.split()[0])
             self.params['pt[1]'] = float(toponym_coodrinates.split()[1])
             self.place_a_map()
+            toponym_address = toponym["metaDataProperty"]["GeocoderMetaData"]["text"]
+            self.address_info.setText(toponym_address)
         except Exception as e:
             print(e.__class__.__name__)
             self.map_pic = QPixmap('error.jpg')
