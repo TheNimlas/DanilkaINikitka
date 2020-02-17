@@ -76,7 +76,7 @@ class Window(QWidget, Ui_maps):
             self.response = requests.get(
                 self.map_request.format(self.params['first_coord'], self.params['second_coord'],
                                         self.i, self.i, self.style,
-                                        self.params['pt[0]'], self.params['pt[1]']))
+                                        self.params['first_coord'], self.params['second_coord']))
         else:
             self.response = requests.get(
                 self.map_request.format(self.params['first_coord'], self.params['second_coord'],
